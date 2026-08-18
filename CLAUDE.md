@@ -92,8 +92,8 @@ TypeScript, `strict` on, `any` fails the build.
 | Animation | `motion` |
 | Tests | Vitest for units, Playwright for end-to-end |
 
-Fonts are vendored into the repository. Nothing is fetched from a CDN at runtime — the shop deployment has
-no internet access.
+Fonts are vendored into the repository. Nothing is fetched from a CDN at runtime — for privacy, for
+load speed, and so the app keeps working if the link is down.
 
 ## Working agreement
 
