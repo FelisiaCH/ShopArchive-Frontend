@@ -5,6 +5,21 @@
     <!-- Used one-handed on a phone: no zoom lock, and the layout runs under the notch. -->
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>ShopArchive</title>
+    <script>
+      // Sets data-theme before first paint so switching themes (or loading the app on a phone
+      // that chose one last time) never flashes the wrong palette. Mirrors the zustand persist
+      // shape written by src/state/themeStore.ts — kept in sync by hand since this has to run
+      // before any module loads.
+      (function () {
+        try {
+          var raw = localStorage.getItem('sa_theme');
+          var mode = raw ? JSON.parse(raw).state.mode : 'system';
+          document.documentElement.setAttribute('data-theme', mode);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'system');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

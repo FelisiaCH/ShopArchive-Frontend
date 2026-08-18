@@ -1,0 +1,88 @@
+/* Radius, padding, and the primary colours are the export's own sign-in/save-entry button
+   (border-radius 9–12px, padding 12–15px, background var(--color-ink), transition 160ms). */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  min-height: var(--touch-target-min);
+  padding: var(--space-6) var(--space-8);
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  cursor: pointer;
+  transition:
+    background var(--duration-base) var(--ease-standard),
+    border-color var(--duration-base) var(--ease-standard),
+    opacity var(--duration-base) var(--ease-standard);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+.primary {
+  background: var(--color-ink);
+  color: var(--color-text-on-ink);
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--color-ink-hover);
+}
+
+.primary:disabled {
+  background: var(--color-border);
+  color: var(--color-text-faint);
+}
+
+.secondary {
+  background: var(--color-surface-raised);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}
+
+.secondary:hover:not(:disabled) {
+  background: var(--color-surface-sunken);
+}
+
+.secondary:disabled {
+  color: var(--color-text-faint);
+  border-color: var(--color-border-subtle);
+}
+
+.danger {
+  background: var(--color-negative);
+  color: var(--color-text-on-ink);
+}
+
+.danger:hover:not(:disabled) {
+  filter: brightness(0.92);
+}
+
+.danger:disabled {
+  background: var(--color-border);
+  color: var(--color-text-faint);
+}
+
+/* Busy keeps the button's own footprint — the label swaps to the verb the caller passes in
+   (CLAUDE.md #9: "a spinner inside the pressed button with its label swapped to the verb"). The
+   button stays disabled the whole time it's busy (#10: a pressed control can't fire twice). */
+.busy {
+  cursor: wait;
+}
+
+.spinner {
+  width: 1em;
+  height: 1em;
+  font-size: var(--text-md);
+  border-radius: var(--radius-full);
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  opacity: 0.85;
+  animation: spin var(--duration-spin) linear infinite;
+  flex: 0 0 auto;
+}

@@ -1,0 +1,86 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.boxRow {
+  position: relative;
+  display: inline-flex;
+  gap: var(--space-4);
+}
+
+/* The real input sits over the boxes and is transparent — it is what actually receives typing,
+   paste, backspace, and autofill (`autocomplete="one-time-code"`), which is far more robust than
+   wiring six separate inputs by hand. The boxes underneath are purely the read-out. */
+.hiddenInput {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: text;
+}
+
+.hiddenInput:disabled {
+  cursor: not-allowed;
+}
+
+.box {
+  width: 44px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-raised);
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-primary);
+  transition: border-color var(--duration-base) var(--ease-standard);
+}
+
+.box.active {
+  border-color: var(--color-text-primary);
+}
+
+.box.filled {
+  border-color: var(--color-border);
+}
+
+.box.error {
+  border-color: var(--color-negative);
+}
+
+.box.disabled {
+  background: var(--color-surface-sunken);
+  color: var(--color-text-disabled);
+}
+
+.caret {
+  width: 2px;
+  height: 1.1em;
+  background: var(--color-text-primary);
+  animation: caretBlink var(--duration-caret) steps(1) infinite;
+}
+
+.helper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.helper.error {
+  color: var(--color-negative);
+}
+
+.helper.expired {
+  color: var(--color-negative);
+}

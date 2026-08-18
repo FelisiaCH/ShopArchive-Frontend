@@ -1,0 +1,54 @@
+/* Border, radius, and padding are the export's own username/password fields
+   (border 1px var(--color-border), radius 9px, padding 11px 12px). */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.label {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.input {
+  min-height: var(--touch-target-min);
+  padding: var(--space-6) var(--space-6);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-raised);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  transition:
+    border-color var(--duration-base) var(--ease-standard),
+    background var(--duration-base) var(--ease-standard);
+}
+
+.input::placeholder {
+  color: var(--color-text-faint);
+}
+
+.input:disabled {
+  background: var(--color-surface-sunken);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+.input.error {
+  border-color: var(--color-negative);
+}
+
+.help {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.errorMessage {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-negative);
+}

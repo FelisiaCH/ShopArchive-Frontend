@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider } from 'react-router';
 
 import { router } from './router';
+import { useApplyTheme } from './state/useApplyTheme';
 
 /**
  * Query defaults are deliberately left alone here. Retry, timeout, and idempotency behaviour are
@@ -10,6 +11,8 @@ import { router } from './router';
 const queryClient = new QueryClient();
 
 export function App() {
+  useApplyTheme();
+
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />

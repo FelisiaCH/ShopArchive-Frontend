@@ -1,0 +1,106 @@
+/*
+ * Motion primitives — F1.
+ *
+ * Keyframes shared by every component. `fadeRise`, `growUp`, `growRight`, `caretBlink`,
+ * `sheetUp`, and `livePulse` are copied from the design export's own `<style data-dc-tpl="6">`
+ * block (verified by reading it directly, not re-derived), because the export already gives this
+ * app its entrance and status-pulse motion. `spin` and `shimmer` are new — the export is a static
+ * mockup and never had to draw a busy button or a loading skeleton.
+ *
+ * `prefers-reduced-motion: reduce` collapses every animation and transition to effectively
+ * nothing everywhere in the app, per CLAUDE.md #18. Nothing here targets a specific component on
+ * purpose — a reduced-motion user gets the same guarantee from every screen this design system
+ * ever grows, not just the ones someone remembered to test.
+ */
+
+@keyframes fadeRise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes growUp {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes growRight {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes caretBlink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes sheetUp {
+  from {
+    opacity: 0;
+    transform: translateY(48px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes livePulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

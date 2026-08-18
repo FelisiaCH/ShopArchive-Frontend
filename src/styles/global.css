@@ -1,10 +1,12 @@
 /*
- * Scaffold-level globals only: a reset and the vendored font stack. Colours, the type scale,
- * spacing, radii, and motion arrive as design tokens in F1 — there is deliberately no literal
- * colour here.
+ * Global base styles. Design tokens (colour, type, spacing, radii, motion) live in `tokens.css`;
+ * this file is only the reset and the handful of rules that have to apply to bare elements —
+ * every colour and font reference below is a `var(--…)`, never a literal.
  */
 
 @import './fonts.css';
+@import './tokens.css';
+@import './motion.css';
 
 *,
 *::before,
@@ -18,19 +20,42 @@ body {
   padding: 0;
 }
 
+html {
+  color-scheme: light dark;
+}
+
 body {
-  /* Geist covers Latin; Google Sans is the family in the export that carries Lao and Thai. */
-  font-family: 'Google Sans', 'Geist', sans-serif;
+  font-family: var(--font-sans);
+  background: var(--color-canvas);
+  color: var(--color-text-primary);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
   -webkit-font-smoothing: antialiased;
+  transition:
+    background var(--duration-moderate) var(--ease-standard),
+    color var(--duration-moderate) var(--ease-standard);
 }
 
 code,
 kbd,
 samp,
 pre {
-  font-family: 'Google Sans Code', monospace;
+  font-family: var(--font-mono);
+}
+
+/* Lao and Thai need more vertical room than Latin or they clip (docs/I18N.md). The rule attaches
+   to the language actually being declared — never to a bare selector — so it only ever affects
+   text that is really in one of these scripts. */
+:lang(lo),
+:lang(th) {
+  line-height: var(--leading-script);
 }
 
 #root {
   min-height: 100dvh;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
 }
