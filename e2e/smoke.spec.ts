@@ -14,7 +14,10 @@ test('loads without asking anything off the machine', async ({ page }) => {
   });
 
   await page.goto('/');
-  await expect(page.getByRole('heading', { name: 'ShopArchive' })).toBeVisible();
+  // "Today" is the default route's own heading — the shell replaced the scaffold's placeholder
+  // route in F2, so the page's identity is now its title bar ("ShopArchive", index.html) plus a
+  // real screen heading rather than a top-level "ShopArchive" <h1>.
+  await expect(page.getByRole('heading', { name: 'Today' })).toBeVisible();
   await page.evaluate(() => document.fonts.ready.then(() => undefined));
 
   expect(offMachine).toEqual([]);

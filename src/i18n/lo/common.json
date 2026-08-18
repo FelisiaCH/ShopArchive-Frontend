@@ -1,0 +1,25 @@
+{
+  "app": {
+    "name": "ShopArchive"
+  },
+  "nav": {
+    "sectionShop": "ຮ້ານ",
+    "today": "ມື້ນີ້",
+    "record": "ບັນທຶກ",
+    "notes": "ໂນດ",
+    "reports": "ລາຍງານ",
+    "settings": "ຕັ້ງຄ່າ",
+    "account": "ບັນຊີ",
+    "addEntry": "ເພີ່ມລາຍການ"
+  },
+  "language": {
+    "switcherLabel": "ພາສາ"
+  },
+  "notFound": {
+    "title": "ບໍ່ພົບໜ້ານີ້",
+    "body": "ບໍ່ມີໜ້ານີ້ຢູ່. ໃຫ້ໃຊ້ເມນູນຳທາງກັບຄືນສູ່ໜ້າທີ່ໃຊ້ໄດ້."
+  },
+  "placeholder": {
+    "note": "ໜ້ານີ້ຍັງສ້າງບໍ່ແລ້ວ."
+  }
+}

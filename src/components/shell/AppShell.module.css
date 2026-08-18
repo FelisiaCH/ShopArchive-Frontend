@@ -1,0 +1,24 @@
+.shell {
+  display: flex;
+  min-height: 100dvh;
+  background: var(--color-canvas);
+}
+
+.content {
+  flex: 1 1 auto;
+  min-width: 0;
+  /* Room for the fixed bottom bar below the shell breakpoint — cleared again above it, where
+     BottomNav.module.css hides the bar entirely. Kept in sync by hand with that file's own
+     860px breakpoint (see the comment there). */
+  padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 860px) {
+  .content {
+    padding-bottom: 0;
+  }
+}
+
+.transition {
+  animation: fadeRise var(--duration-moderate) var(--ease-standard) both;
+}

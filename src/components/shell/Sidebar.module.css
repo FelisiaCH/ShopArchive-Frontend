@@ -1,0 +1,113 @@
+/* Desktop-only: hidden below the shell breakpoint (kept in sync by hand with AppShell.module.css
+   and BottomNav.module.css — a CSS custom property cannot be read inside a media query, so the
+   860px breakpoint has to be a literal in each file that needs it). Rendered in the DOM at every
+   width rather than mounted/unmounted, so resizing the window never remounts navigation state. */
+.sidebar {
+  display: none;
+}
+
+@media (min-width: 860px) {
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 228px;
+    flex: 0 0 auto;
+    padding: var(--space-8) 14px;
+    background: var(--color-surface);
+    border-right: 1px solid var(--color-border-subtle);
+    height: 100dvh;
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: 0 var(--space-4) var(--space-8);
+}
+
+.brandMark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+  border-radius: var(--radius-md);
+  background: var(--color-ink);
+  color: var(--color-text-on-ink);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+}
+
+.brandName {
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionLabel {
+  padding: 0 var(--space-4) var(--space-4);
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-regular);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-lg);
+  min-height: var(--touch-target-min);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: background var(--duration-base) var(--ease-standard);
+}
+
+.row:hover {
+  background: var(--color-surface-sunken);
+}
+
+.rowActive {
+  background: var(--color-border-subtle);
+  color: var(--color-text-primary);
+  font-weight: var(--weight-medium);
+}
+
+.rowActive:hover {
+  background: var(--color-border-subtle);
+}
+
+.icon {
+  font-size: 19px;
+  color: inherit;
+}
+
+.footer {
+  margin-top: auto;
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-divider);
+}

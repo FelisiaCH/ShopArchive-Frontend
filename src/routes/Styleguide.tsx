@@ -12,11 +12,16 @@ import {
   TextField,
   Toast,
 } from '../components/ui';
+import { LANGUAGES } from '../i18n/languages';
+import { useTranslation } from '../i18n/useTranslation';
+import { useApplyLanguage } from '../state/useApplyLanguage';
+import { useLanguageStore } from '../state/languageStore';
 import { useApplyTheme } from '../state/useApplyTheme';
 import { useThemeStore, type ThemeMode } from '../state/themeStore';
 import styles from './Styleguide.module.css';
 
 const THEMES: ThemeMode[] = ['light', 'dark', 'oled', 'system'];
+const NAV_LABEL_KEYS = ['today', 'record', 'notes', 'reports', 'settings', 'account'] as const;
 
 const SWATCHES = [
   'color-canvas',
@@ -45,8 +50,12 @@ const SWATCHES = [
  */
 export function Styleguide() {
   useApplyTheme();
+  useApplyLanguage();
   const mode = useThemeStore((state) => state.mode);
   const setMode = useThemeStore((state) => state.setMode);
+  const language = useLanguageStore((state) => state.language);
+  const setLanguage = useLanguageStore((state) => state.setLanguage);
+  const { t, ready } = useTranslation();
 
   const [buttonBusy, setButtonBusy] = useState(false);
   const [fieldError, setFieldError] = useState(true);
@@ -74,6 +83,37 @@ export function Styleguide() {
           </button>
         ))}
       </div>
+
+      <div className={styles.themeSwitcher} data-testid="language-switcher">
+        {LANGUAGES.map((lang) => (
+          <button
+            key={lang.code}
+            type="button"
+            className={styles.themeButton}
+            data-active={language === lang.code}
+            data-testid={`language-${lang.code}`}
+            lang={lang.code}
+            onClick={() => setLanguage(lang.code)}
+          >
+            {lang.nativeName}
+          </button>
+        ))}
+      </div>
+
+      <section className={styles.section} data-testid="section-i18n">
+        <span className={styles.sectionLabel}>Nav labels — F2's i18n system, common.json</span>
+        <div className={styles.card} lang={language} data-testid="i18n-ready" data-ready={ready}>
+          <div className={styles.typeSample}>
+            {NAV_LABEL_KEYS.map((key) => (
+              <span key={key} data-testid={`i18n-nav-${key}`}>
+                {t(`nav.${key}`)}
+              </span>
+            ))}
+            <span data-testid="i18n-notfound-title">{t('notFound.title')}</span>
+            <span data-testid="i18n-placeholder-note">{t('placeholder.note')}</span>
+          </div>
+        </div>
+      </section>
 
       <section className={styles.section} data-testid="section-colors">
         <span className={styles.sectionLabel}>Colour tokens</span>

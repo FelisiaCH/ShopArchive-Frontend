@@ -1,0 +1,25 @@
+{
+  "app": {
+    "name": "ShopArchive"
+  },
+  "nav": {
+    "sectionShop": "Shop",
+    "today": "Today",
+    "record": "Record",
+    "notes": "Notes",
+    "reports": "Reports",
+    "settings": "Settings",
+    "account": "Account",
+    "addEntry": "Add entry"
+  },
+  "language": {
+    "switcherLabel": "Language"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "That page doesn't exist. Use the navigation to get back to a real screen."
+  },
+  "placeholder": {
+    "note": "This screen hasn't been built yet."
+  }
+}

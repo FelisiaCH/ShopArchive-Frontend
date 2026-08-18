@@ -1,0 +1,73 @@
+/* Mobile-only: hidden at and above the shell breakpoint (kept in sync by hand with
+   AppShell.module.css and Sidebar.module.css — see the comment there). Fixed to the viewport
+   bottom; AppShell.module.css pads the content column so nothing sits underneath it. */
+.bar {
+  display: none;
+}
+
+@media (max-width: 859.98px) {
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    background: var(--color-surface-raised);
+    border-top: 1px solid var(--color-border-subtle);
+    padding: var(--space-5) var(--space-9) calc(var(--space-9) + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: var(--touch-target-min);
+  min-height: var(--touch-target-min);
+  color: var(--color-text-faint);
+  text-decoration: none;
+}
+
+.tabActive {
+  color: var(--color-text-primary);
+}
+
+.icon {
+  font-size: 22px;
+}
+
+.label {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-regular);
+  color: var(--color-text-label);
+}
+
+.tabActive .label {
+  color: var(--color-text-primary);
+  font-weight: var(--weight-medium);
+}
+
+.fab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  border-radius: var(--radius-xl);
+  background: var(--color-ink);
+  color: var(--color-text-on-ink);
+  transition: background var(--duration-base) var(--ease-standard);
+}
+
+.fab:hover {
+  background: var(--color-ink-hover);
+}
+
+.fabIcon {
+  font-size: 24px;
+}

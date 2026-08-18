@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider } from 'react-router';
 
 import { router } from './router';
+import { useApplyLanguage } from './state/useApplyLanguage';
 import { useApplyTheme } from './state/useApplyTheme';
 
 /**
@@ -12,6 +13,7 @@ const queryClient = new QueryClient();
 
 export function App() {
   useApplyTheme();
+  useApplyLanguage();
 
   return (
     <QueryClientProvider client={queryClient}>

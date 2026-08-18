@@ -1,0 +1,25 @@
+{
+  "app": {
+    "name": "ShopArchive"
+  },
+  "nav": {
+    "sectionShop": "ร้านค้า",
+    "today": "วันนี้",
+    "record": "บันทึก",
+    "notes": "โน้ต",
+    "reports": "รายงาน",
+    "settings": "ตั้งค่า",
+    "account": "บัญชี",
+    "addEntry": "เพิ่มรายการ"
+  },
+  "language": {
+    "switcherLabel": "ภาษา"
+  },
+  "notFound": {
+    "title": "ไม่พบหน้านี้",
+    "body": "ไม่มีหน้านี้อยู่ ใช้เมนูนำทางเพื่อกลับไปยังหน้าที่มีอยู่จริง"
+  },
+  "placeholder": {
+    "note": "หน้านี้ยังสร้างไม่เสร็จ"
+  }
+}

@@ -19,6 +19,19 @@
           document.documentElement.setAttribute('data-theme', 'system');
         }
       })();
+      // Same idea for the interface language (src/state/languageStore.ts, sa_language): sets
+      // <html lang> before first paint so text never renders in one language and relabels itself
+      // a moment later, and so the Lao/Thai line-height rule in global.css (:lang(lo), :lang(th))
+      // is already correct on the very first frame.
+      (function () {
+        try {
+          var raw = localStorage.getItem('sa_language');
+          var language = raw ? JSON.parse(raw).state.language : 'en';
+          document.documentElement.setAttribute('lang', language);
+        } catch (e) {
+          document.documentElement.setAttribute('lang', 'en');
+        }
+      })();
     </script>
   </head>
   <body>
